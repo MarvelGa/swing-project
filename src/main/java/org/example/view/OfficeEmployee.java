@@ -27,7 +27,7 @@ public class OfficeEmployee {
     private JButton btnClick;
     private JTable tblData;
 
-    private boolean isTriangleHidden=false;
+    private boolean isTriangleHidden = false;
     private static final int COLUMN_QUANTITY_FOR_NAME_FIELD = 1;
     private static final String NAME_OF_FIRST_COLUMN = "Employee's Name";
     private static final String NAME_OF_NEXT_COLUMN = "Phone number";
@@ -44,16 +44,11 @@ public class OfficeEmployee {
         employeeFrame = new JFrame("Employee View");
         employeeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         employeeFrame.setSize(MAIN_WIDTH, MAIN_HEIGHT);
-
         paintingPanel = new CustomPanel();
-
         panelMain = new JPanel();
         txtName = new JTextField(10);
         labelText = new JLabel("Enter name");
         btnClick = new JButton("Find");
-
-
-
         panelMain.add(labelText);
         panelMain.add(txtName);
         panelMain.add(btnClick);
@@ -90,7 +85,7 @@ public class OfficeEmployee {
                     JOptionPane.showMessageDialog(btnClick,
                             String.format("Employee with name" + '"' + "%s" + '"' + " is found, his contacts: %s", txtName.getText(), employeePhoneNumbers));
                     paintingPanel.setVisible(false);
-                    isTriangleHidden =true;
+                    isTriangleHidden = true;
                     renderTable();
                 }
                 txtName.setText("");
@@ -117,12 +112,12 @@ public class OfficeEmployee {
         JScrollPane tableSP = new JScrollPane(tblData);
         tableSP.setPreferredSize(new Dimension(TABLE_WIDTH, TABLE_HEIGHT));
         employeeFrame.setLocationRelativeTo(null);
-        if (!isTriangleHidden){
+        if (!isTriangleHidden) {
             paintingPanel.add(panelMain);
             paintingPanel.add(tableSP, BorderLayout.CENTER);
             employeeFrame.add(paintingPanel);
-        }else{
-            employeeFrame.add(tableSP,  BorderLayout.CENTER);
+        } else {
+            employeeFrame.add(tableSP, BorderLayout.CENTER);
             employeeFrame.add(panelMain, BorderLayout.WEST);
         }
         DefaultTableModel model = (DefaultTableModel) tblData.getModel();
