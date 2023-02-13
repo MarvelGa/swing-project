@@ -1,0 +1,3 @@
+1) This App uses "MySQL" DB, set your credentials for the connection in "hibernate.cfg.xml" file.
+2) Run the "App" class. After running the class the "swing_project" database will be created automatically and the prepared list of employee will be saved in the DB.
+3) After the above steps the window with list of employee will appear with  "Triangle" background and "finding" operation will be available.
