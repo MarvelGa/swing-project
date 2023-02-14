@@ -82,10 +82,11 @@ public class OfficeEmployee {
                 if (numbersList.size() > 0) {
                     String employeePhoneNumbers = numbersList.stream()
                             .collect(Collectors.joining(", "));
+                    isTriangleHidden = true;
+                    renderTable();
                     JOptionPane.showMessageDialog(btnClick,
                             String.format("Employee with name" + '"' + "%s" + '"' + " is found, his contacts: %s", txtName.getText(), employeePhoneNumbers));
-                    paintingPanel.setVisible(false);
-                    isTriangleHidden = true;
+                    isTriangleHidden = false;
                     renderTable();
                 }
                 txtName.setText("");
@@ -113,12 +114,17 @@ public class OfficeEmployee {
         tableSP.setPreferredSize(new Dimension(TABLE_WIDTH, TABLE_HEIGHT));
         employeeFrame.setLocationRelativeTo(null);
         if (!isTriangleHidden) {
+            employeeFrame.getContentPane().removeAll();
+            employeeFrame.getContentPane().revalidate();
+            employeeFrame.getContentPane().repaint();
             paintingPanel.add(panelMain);
             paintingPanel.add(tableSP, BorderLayout.CENTER);
-            employeeFrame.add(paintingPanel);
+            employeeFrame.setContentPane(paintingPanel);
         } else {
-            employeeFrame.add(tableSP, BorderLayout.CENTER);
-            employeeFrame.add(panelMain, BorderLayout.WEST);
+            employeeFrame.getContentPane().removeAll();
+            employeeFrame.getContentPane().revalidate();
+            employeeFrame.getContentPane().repaint();
+            employeeFrame.setContentPane(tableSP);
         }
         DefaultTableModel model = (DefaultTableModel) tblData.getModel();
         setColumnTitle(model, columnNames);
